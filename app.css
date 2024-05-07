@@ -1,0 +1,158 @@
+body {
+  margin: 0; /* Reset default browser margins */
+  padding: 0; /* Control spacing, if needed */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Set a base font family */
+  background-color: #4c4b80; /* Default background color */
+  color: #333; /* Default text color */
+  line-height: 1.5; /* Comfortable line spacing */
+  height: 100vh;
+  min-width: 320px;
+}
+
+
+form {
+  width: 80vw;
+  max-width: 762px;
+  margin-left: 40px;
+  margin-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2rem 2rem 6rem 6rem;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+  border: 3px solid rgb(120, 119, 119);
+  padding: 10px;
+  background-color: #dddcdf;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  box-shadow: 4px -5px 4px rgba(0, 0, 0, 0.4); 
+  min-width: 340px;
+}
+
+li {
+    min-width: 320px;
+
+}
+
+.blockDelete {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+h1 { 
+   display: block;
+   margin-left: 50px;
+   margin-top: 40px;
+   color: #7c7979;
+   font-family: "Nunito", sans-serif;
+   font-size: 1.1rem;
+   font-weight: bold;
+   letter-spacing: 2px;
+   text-align: left;
+   text-shadow: -1px -1px 0.7px rgba(192, 196, 197, 0.6);
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+strong {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+form input, 
+form textarea {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: #dddcdf;
+}
+
+
+
+textarea:hover,
+textarea:active,
+input:hover,
+input:active { border: 2px solid rgb(105, 103, 103);
+    background-color: rgb(192, 196, 197);
+    
+} 
+
+input[name='name'] { border-top-left-radius: 0.5rem; }
+input[name='place'] { border-top-right-radius: 0.5rem; }
+input[name="problem"] { grid-column: span 2; }
+input[name='delete'] { 
+    width: 2rem; 
+    margin-right: 0.5rem;
+    height: 1.6rem;
+    margin-top: 2px;
+    border-radius: .4rem; 
+
+ }
+
+textarea[name="description"] { grid-column: span 2; }
+textarea[name="solution"] {
+  grid-column: span 2;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    width: 80vw;
+    max-width: 762px;
+    
+}
+
+li {
+    background-color: #dddcdf;
+    padding: 0.5rem;
+    margin-top: 10px;
+    border: 2px solid rgb(105, 103, 103);
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    box-shadow: 4px -5px 4px rgba(0, 0, 0, 0.4); 
+}
+li p {
+    font-size: 0.9em;
+}
+
+button {
+    border: none;
+    border-radius: 0.5rem;
+    border: 2px solid rgb(105, 103, 103);
+    width: 5rem;
+    background-color: rgb(192, 196, 197);
+    padding: 5px 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover,
+button:active {
+    background-color: #a19f9f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+
+  
+.remove-animation {
+    opacity: 0;  /* Hide the element */
+}
+
+.editable {
+    background-color: lightblue;
+}
+
+[contenteditable='true'] {
+    background: lightcyan; 
+    border: 1.5px solid black;
+}
