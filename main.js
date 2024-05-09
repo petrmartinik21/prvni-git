@@ -49,12 +49,6 @@ const updateButton = form.querySelector(".update");
 // const moment = require('moment');
 // CREATE NEW CARDS, INSERT INTO DOM ********************
 
-// function spravUpdate(id) {
-// const cardElement = document.querySelector("#card-" + id);
-//cardElement.querySelector('.editTwo').innerHTML;
-// console.log(cardElement);
-// }
-
 function createNewCard(
   container,
   id,
@@ -68,9 +62,10 @@ function createNewCard(
   let newCard = document.createElement("li");
   // vytvorim id pro kazdou novou kartu abych ji mohl pozdeji mazat nebo updatovat
   newCard.id = `card-${id}`;
-  // newCard.className = "animate__animated animate__zoomIn animate__faster";
+  
   newCard.innerHTML = `
       <p> Id: ${id} | Time: ${time} | Name: ${name} | Station: ${place} | Problem: ${problem}</p>
+            
       <p class='updateDescriptionButton'> <strong>Description: </strong> </p>
       <p contenteditable ='true' class='edit'>${description}</p>
       <p> <strong> Solution: </strong> </p>
@@ -79,6 +74,7 @@ function createNewCard(
     `;
 
   newCard;
+  
   container.prepend(newCard);
 }
 
@@ -106,11 +102,12 @@ saveButton.addEventListener("click", async function (event) {
     textareaDescription.value,
     textareaSolution.value
   ).then((data) => {
+    //console.log(data[0].created_at = new Date(data[0].created_at).toLocaleTimeString("cz-CZ"));
     if (data) {
       createNewCard(
         cardContainer,
-        data[0].id,
-
+        data[0].id, 
+        data[0].created_at = new Date(data[0].created_at).toLocaleTimeString("cz-CZ"),
         inputName.value,
         inputPlace.value,
         inputProblem.value,
@@ -119,12 +116,13 @@ saveButton.addEventListener("click", async function (event) {
       );
       resetForm();
     }
+    
   });
+  
 });
 
 form.addEventListener("keyup", async function (event) {
   // zabrani se automatickemu reloadu stranky
-
   event.preventDefault();
   // kdyz klavesa neni enter, konec
   if (event.code !== "Enter") return;
@@ -149,6 +147,7 @@ form.addEventListener("keyup", async function (event) {
       createNewCard(
         cardContainer,
         data[0].id,
+        data[0].created_at = new Date(data[0].created_at).toLocaleTimeString("cz-CZ"),
         inputName.value,
         inputPlace.value,
         inputProblem.value,
@@ -205,7 +204,6 @@ updateButton.addEventListener("click", async function (event) {
     // transform data
     const nodeId = parseInt(node.parentNode.id.split("-")[1], 10);
     //  call function updateCards
-
     db.updateCards(nodeValue, nodeId);
   });
 
@@ -217,7 +215,6 @@ updateButton.addEventListener("click", async function (event) {
     // transform data
     let nodeId = parseInt(node.parentNode.id.split("-")[1], 10);
     //  call function updateCards
-
     db.updateCardsTwo(nodeValue, nodeId);
   });
 });
@@ -238,7 +235,8 @@ db.fetchCards().then((cardsTwo) => {
       card.description,
       card.solution
     );
-  });
+    
+  }); 
 });
 
 // UPDATE INDIVIDUALNE
